@@ -1,4 +1,5 @@
 import express from 'express';
+const bodyParser = require('body-parser')
 import config from './config';
 import sassMiddleware from 'node-sass-middleware';
 import path from 'path';
@@ -11,10 +12,14 @@ server.use(sassMiddleware({
 }))
 server.set('view engine', 'ejs');
 
+server.use(bodyParser.json())
 server.use(express.static('public'));
-server.use('/api', apiRouter);
 
-serverRender()
+server.use('/api', apiRouter);
+server.use('/', express.static('public'));
+// parse application/json
+
+/*serverRender()
  .then(( {markUp, intialData} )=>{
     server.get('/', (req, res) =>{
     res.render('index', {
@@ -25,7 +30,7 @@ serverRender()
  })
  .catch(error=>{
      console.log('Error', error);
- })
+ })*/
 
 server.listen(config.port,config.host, ()=>{
     console.info('Listening to port: ', config.port);

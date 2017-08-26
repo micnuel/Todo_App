@@ -7,7 +7,7 @@ class TodoPreview extends React.Component{
     render(){
        return(
 
-            <div className ="link" onClick={this.handleClick}>
+            <div className ="link" onClick={() => this.props.onClick()}>
             <div className="todo-title"> 
                 <p>                   
                     {this.props.title}  

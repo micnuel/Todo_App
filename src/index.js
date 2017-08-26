@@ -101,7 +101,7 @@ import ReactDom from 'react-dom';
 if(typeof window !== 'undefined') {
   
 ReactDom.render(
-  <App intialTodo={window.intialData.todos}/>,
+  <App/>,
 document.getElementById('root')
 )
 }
